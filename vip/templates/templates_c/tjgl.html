@@ -1,0 +1,81 @@
+!Templates.html5.content!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $oe; ?>" />
+<meta name="googlebot" content="index,noarchive,nofollow,noodp" />
+<meta name="robots" content="index,nofollow,noarchive,noodp" />
+<meta http-equiv="keywords" content="Fulltext Search Engine @project_name@ @package_name@" />
+<meta http-equiv="description" content="Fulltext Search for @project_name@, Powered by @package_name@/@package_version@ " />
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+<link rel="stylesheet" type="text/css" href="css/style.css"/>
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--[if lte IE 6]>
+<link rel="stylesheet" type="text/css" href="css/bootstrap-ie6.css" />
+<link rel="stylesheet" type="text/css" href="css/ie.css" />
+<![endif]-->
+
+<script src="./js/jquery-1.11.3.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+$(function(){                   // dom元素加载完毕
+//	$("#tuichu").click(function(){      //获取页面中的所有b元素 , 给每一个b元素添加onclick事件
+//		//alert("Hello ShopNC");
+//		var newHref = "<?php echo './index.php?action=out';?>" ;
+//		var newHref = "./index.php?action=out";
+
+//$('#tuichu').attr("href",newHref )
+//	   })
+	})
+
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+<title>后台管理</title>
+</head>
+
+<body>
+<center>
+  <table width="51%" height="250"  border="0" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
+    <tr>
+      <td align="center"><strong>后台管理</strong>| 
+     <!--<a id = "tuichu"> 退出    </a>-->
+     <a href= <{$PageURLk}>>退出 </a>
+ 	<!--<h1><a href="<?php echo $_SERVER['SCRIPT_NAME']; ?>"><img src="img/logo.jpg" /></a></h1>-->
+      </td>
+    </tr>
+    <tr>
+      <td align="center" bgcolor="#CCCCCC"><a href="index.php?action=member"><img src="image/35.jpg" style="width:20px;height:20px"/>售票员管理</a></td>
+    </tr>
+    <tr>
+      <td align="center" bgcolor="#CCCCCC"><a href="index.php?action=message_list"><img src="image/genicon.gif" style="width:20px;height:20px"/>售票员留言管理</a></td>
+    </tr>
+    <tr>
+      <td align="center" bgcolor="#CCCCCC"><a href="index.php?action=cslr"><img src="image/J0300520.GIF" style="width:20px;height:20px"/>城市信息注册</a></td>
+    </tr>      
+    <tr>
+      <td align="center" bgcolor="#CCCCCC"><a href="index.php?action=cswh"><img src="image/logon.jpg" style="width:20px;height:20px"/>城市信息维护</a></td>
+    </tr>      
+    <tr>
+      <td align="center" bgcolor="#CCCCCC"><a href="index.php?action=pzlr"><img src="image/Lotus.gif" style="width:20px;height:20px"/>票种信息注册</a></td>
+    </tr>    
+    <tr>
+      <td align="center" bgcolor="#CCCCCC"><a href="index.php?action=pzwh"><img src="image/tjpg.jpg" style="width:20px;height:20px"/>票种信息维护</a></td>
+    </tr>  
+    <tr>
+      <td align="center" bgcolor="#CCCCCC"><a href="index.php?action=qjlr"><img src="image/trafficRed.gif" style="width:20px;height:20px"/>期间信息注册</a></td>
+    </tr>    
+    <tr>
+      <td align="center" bgcolor="#CCCCCC"><a href="index.php?action=qjwh"><img src="image/wwcban.jpg" style="width:20px;height:20px"/>期间信息维护</a></td>
+    </tr>  
+    <tr>
+      <td align="center" bgcolor="#CCCCCC"><a href="index.php?action=p_cx_human"><img src="image/88s.jpg" style="width:20px;height:20px"/>历史售票查询（所有）</a></td>
+    </tr>          
+    <tr>
+      <td align="center" bgcolor="#CCCCCC"><a href="index.php?action=tjgl"><img src="image/1_2.bmp" style="width:20px;height:20px"/>统计报表</a></td>
+    </tr>             
+    </table>
+</center>
+</body>
+</html>

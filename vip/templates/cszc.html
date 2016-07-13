@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>乐天游乐场售票系统-城市注册</title>
+<link rel="stylesheet" type="text/css" href="./templates/css/demo.css" />
+<script type="text/javascript" src="../JS/jquery-1.11.3.js"></script>
+<script src="../jquery-validation-1.9.0/lib/jquery.js" type="text/javascript"></script>
+<script src="../jquery-validation-1.9.0/lib/jquery.form.js" type="text/javascript"></script>
+<script src="../jquery-validation-1.9.0/jquery.validate.js" type="text/javascript"></script>
+<script src="../jquery-validation-1.9.0/lib/jquery.metadata.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+  $("#form_regist").validate({
+    onsubmit:true,
+    // 是否在提交时验证,默认:true
+    //onfocusout:false,
+    // 是否在获取焦点时验证,默认:true
+    onkeyup :true,
+    // 是否在敲击键盘时验证,默认:true
+    onclick:false,
+    // 是否在鼠标点击时验证（一般验证checkbox,radiobox）
+    focusCleanup:true,
+    // 当未通过验证的元素获得焦点时,并移除错误提示
+    focusInvalid: true,
+    //是否把焦点聚焦在最后一个动作或者最近的一次出错上 
+    submitHandler:
+    //通过验证后运行的函数,里面要加上表单提交的函数,否则表单不会提交 
+    $(".selector").validate({
+      submitHandler:function(form) {
+      alert("验证通过");
+      //$(form).ajaxSubmit();
+      form.submit();
+         }
+    }),
+     rules: {
+      txtloginname: {
+        required:true,  //必填项
+        minlength:function(){ //最短长度，这里为自定义的验证函数
+          doAjax(); //执行验证
+          return 2;
+        },
+        maxlength:function(){ //最长长度
+        return 50;
+        }
+      },
+
+      //必填项，最小长度为2，最大长度为100，有问题将“保存用户注册信息”按钮失效。
+      txtPassword: {required:true,minlength:2,maxlength:100},
+      //必填项，长度为6至16个字符，有问题将“保存用户注册信息”按钮失效。
+      txtcheckpassword: {required:true,minlength:6,maxlength:16,equalTo:'#yd631_pws1'},
+      //必填项，长度为6至16个字符，两次密码输入必须相同，有问题将“保存用户注册信息”按钮失效。
+      yd631_age: {number: true,min:1.00,max:10000.00},
+      //要求为正整数且位于10和150之间，有问题将“保存用户注册信息”按钮失效。
+      yd631_call: {number: true},
+      //要求为正整数，有问题将“保存用户注册信息”按钮失效。
+
+      txtemail: {required:true,email:true},
+      //必填项，输入格式为邮箱格式，有问题将“保存用户注册信息”按钮失效。
+      txtecheckmail: {required:true,email:true,equalTo:'#yd631_email1'},
+      //必填项输入格式为邮箱格式，两次邮箱输入必须相同，有问题将“保存用户注册信息”按钮失效。
+    },
+    //下面为提示信息
+    messages: {
+      txtloginname: {required: "城市不能为空!",minlength: "城市长度至少是 2 。",maxlength: "城市超过允许的最大长度（100）。"},
+    },
+    	errorElement:'span',
+      errorPlacement: function(error, element) {
+         element.parent().find('.in_info').html(error);                    
+      },
+    
+  });
+
+
+});
+
+function doAjax() {
+ $.ajax({
+    url: "member57_cszc.php",     //提交的动态页面地址
+    data: 'action=check&username='+ $('#yd631_name').val() ,   //提交过去的参数
+    type:'post',   //上面的参数会以POST形式提交给后台
+    dataType:"html",   //返回纯文本HTML信息
+    beforeSend: function(XMLHttpRequest){
+    },
+    success: function(data){
+      if ('0'==data) {/*没有被注册*/
+        $("#loginname_sign").html("<span style='color:green;line-height:30px;'>恭喜您，城市名可以使用</span>");
+      }else if ('1'==data) {/*已经被注册*/
+        $("#loginname_sign").html("<span style='color:red;line-height:30px;'>城市名已被注册</span>");
+      }else {/*条件不对*/
+        $("#saveregid").attr("disabled", true);
+        $("#loginname_sign").html(data);
+      }
+    },
+    complete: function(XMLHttpRequest, textStatus){
+      //HideLoading();
+    },
+  });
+
+    }
+
+</script>
+</head>
+
+<body>
+
+  <div id="contain">
+    <form class="cmxform" id="form_regist" method="post" action="index.php?action=reg_save_cslr">
+    <!--  <div class="w700 top_img"></div>-->
+    <div class="w700 form_part_1">
+      <!--<div class="w700 part_1_info"></div>-->
+      <div class="w700 part_1_con">
+        <div class="part_1_left_con">
+
+		    <ul>
+            <li>城市名称：</li>
+			<li >EXIT：          
+            <!--  <li>性别:</li>-->
+            <!--  <li style="border-bottom:0px;">验证码:</li>-->
+        </ul>
+        </div>
+        <div class="part_1_right_con">
+        <ul>
+			  <li><input class="in" name="txtloginname" type="text" id="yd631_name" />
+			  <span id="loginname_sign" class="in_info">3-50个字符（包含小写字母、数字、下划线、中文），最多使用5个汉字，推荐使用中文名，一旦注册成功则不能修改。</span></li>
+		      <li><span class="in_info" style="line-height:30px;"><a href="./index.php?action=hygl">退出</a></span></li>
+		      </ul>
+		      </div>
+		   </div>
+		</div>
+          <div style="clear:both"></div>
+          <div class="w700 btn"><input type="submit" name="Submit" id="tj"></div>
+ 	    
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+﻿<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+<title>修改留言</title>
+</head>
+<body>
+<!--  
+在FORM中点击提交按钮后弹出对话框
+<form name="Form1" method="post" action="javascript:if(confirm('确实要更改该内容 吗20160331?'))location='center.php?action=update&id=<{$id}>'">
+此写法导致$_SERVER['REQUEST_METHOD'] = 'GET'而不是'POST'
+原写法：<form name="Form1" method="post" action="javascript:if(confirm('确实要更改该内容 吗20160331?'))location='center.php?action=update&id=<{$id}>'">
+-->
+  <form name="Form1" method="post" action="center.php?action=gengxin&id=<{$id}>">
+  <table width="550" border="0" align="center" cellpadding="10" cellspacing="0">
+   <tr class="firstTr">
+    <td colspan="2"><strong>编辑留言</strong> ：</td>
+   </tr>
+     <tr>
+    <td align="right">ID：</td>
+    <td><{$id}></td>
+  </tr>
+   <tr>
+    <td align="right">留言人：</td>
+    <td><{$username}></td>
+   </tr>
+   <tr>
+    <td align="right">标题 ：</td>
+    <td><input name="title" type="text" id="title" size="50"  value="<{$title}>"/></td>
+   </tr>
+   <tr>
+    <td align="right">内容 ：</td>
+    <td><textarea name="content" cols="50" rows="5" id="content" ><{$content}></textarea></td>
+    </tr>
+    <tr>
+     <td align="right">密码：</td>
+     <td><input type="password" name="pass" id="pass" />（请输入发表留言时密码）</td>
+    </tr>
+    <tr>
+     <td>&nbsp;</td>
+        <td colspan="2"><input type="Submit" name="Submit" value="提交"></td>
+     </tr>
+    </table>
+  </form>
+</body>
+</html>

@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>留言信息列表</title>
+</head>
+<style type="text/css">
+*{
+    font-size:18px;
+}
+tr{
+  width:1050px;line-height:21px;padding:0;margin:0  
+}
+td{
+    width:150px;float:left;text-align:left;overflow: hidden; text-overflow:ellipsis;
+}
+.clear{
+    clear:both;
+}
+</style>
+
+<body>
+<div align="center">
+    <strong>留言信息管理</strong>
+    <a href="./index.php?action=hygl">退出</a>
+    <br/>
+    <hr>
+    <table>
+    <tr>
+    <td>全选</td>
+    <td>ID</td>
+    <td>标题</td>
+    <td>内容</td>
+    <td>留言人</td>
+    <td>时间</td>
+    <td>操作</td>
+    </tr>
+    </table>
+    <div class='clear'></div>
+    <{section name=i loop=$list}>
+        <table>
+        <tr>
+        <td><input type="checkbox" class="child" name="gid[]" value="<{$list[i].id}>" /></td>
+        <td><{$list[i].id}></td>
+        <td><{$list[i].title}></td>  
+        <td><{$list[i].content}></td>
+        <td><{$list[i].username}></td>
+        <td><{$list[i].time|date_format:"%Y-%m-%d"}></td>
+        <td><a href="javascript:if(confirm('确实要删除该内容吗?'))location='index.php?action=delete&id=<{$list[i].id}>'">删除</a></td>
+        </tr>
+        </table>
+        <div class='clear'></div>
+    <{/section}>
+    <{$page}>   
+    </div>
+
+</body>
+</html>

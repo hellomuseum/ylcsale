@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>售票员信息</title>
+</head>
+<style type="text/css">
+*{
+    font-size:18px;
+}
+tr{
+  width:1300px;line-height:21px;padding:0;margin:0  
+}
+td{
+  float:left;text-align:left;overflow: hidden; text-overflow:ellipsis;
+}
+.clear{
+    clear:both;
+}
+</style>
+
+<body>
+<div align="center">
+    <strong>售票员管理||</strong>
+    <a href="./index.php?action=hygl">退出</a>
+    <br/>
+    <hr>
+    <table width="100%" height="50"  border="1" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
+    <tr bgcolor="#999999">
+      <td width="4%">选则</td>
+      <td width="3%">ID</td>
+      <td width="5%">名字</td>
+      <td width="20%">密码</td>
+      <td width="3%">性别</td>
+      <td width="5%">年龄</td>
+      <td width="10%">电话</td>
+      <td width="10%">邮件</td>
+      <td width="10%">时间</td>
+      <td width="5%">现住地</td>
+      <td width="10%">曾居地</td>
+      <td width="5%">审核</td>
+      <td width="5%">管理</td>
+    </tr>
+    </table>
+    <div class='clear'></div>
+    <{section name=i loop=$list}>
+        <table width="100%" height="51"  border="1" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
+        <tr bgcolor="#CCCCCC">
+        <td width="4%"><input type="checkbox" class="child" name="gid[]" value="<{$list[i].yd_id}>"/></td>
+        <td width="3%"><{$list[i].yd_id}></td>
+        <td width="5%"><{$list[i].yd_name}></td>  
+        <td width="20%"><{$list[i].yd_pws}></td>
+        <td width="3%"><{$list[i].yd_sex}></td>
+        <td width="5%"><{$list[i].yd_age}></td>
+        <td width="10%"><{$list[i].yd_call}></td>
+        <td width="10%"><{$list[i].yd_email}></td>
+        <td width="10%"><{$list[i].yd_time|date_format:"%Y-%m-%d"}></td>
+        <td width="5%"><{$list[i].yd_address}></td>
+        <td width="10%"><{$list[i].life_cityorhamlet}></td>
+        <td width="5%"><a href="admin_pass.php?id=<{$list[i].yd_id}>&pass=<{$list[i].yd_pass}>"><{$list[i].yd_pass}></a></td> 
+        <td width="5%"><a href="javascript:if(confirm('确实要删除该售票员吗?'))location='admin_del.php?id=<{$list[i].yd_id}>'">删除</a></td>
+        </tr> 
+        </table>
+        <div class='clear'></div>
+    <{/section}>
+    <{$page}>   
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,159 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+#contain{
+	width: 700px;
+	height: 1000px;
+	margin: 0 auto;
+	position: relative;
+}
+.w700{
+	width: 700px;
+}
+.top_img{
+	height: 60px;
+	background: #fff url(../images/top.png) no-repeat;
+}
+.part_1_con{
+	height: 200px;
+	margin-top: 5px;
+	border: 1px solid #dedede;
+}
+.form_part_1{
+	height: 220px;
+	background: #fcfcfc;
+	margin-top: 20px;
+}
+.part_1_cons{
+	height: 125px;
+	margin-top: 5px;
+	border: 1px solid #dedede;
+}
+.form_part_2{
+	height: 150px;
+	background: #fcfcfc;
+	margin-top: 50px;
+}
+.form_part_3{
+	height: 150px;
+	background: #fcfcfc;
+	margin-top: 20px;
+	display: none;
+}
+
+.form_part_4{
+	height: 150px;
+	background: #fcfcfc;
+	margin-top: 20px;
+	display: none;
+}
+
+.part_1_info{
+	height: 26px;
+	background: #FFF url(../images/top_fon.png) no-repeat;
+}
+.part_1_infos{
+	height: 26px;
+	background: #FFF url(../images/top_fons.png) no-repeat 0px 3px;
+}
+.part_1_left_con{
+	width: 178px;
+	height: 200px;
+	float: left;
+}
+.part_1_left_con ul{
+	list-style-type: none;
+}
+.part_1_left_con ul li{
+	width: 178px;
+	height:40px;
+	line-height: 40px;
+	text-align: right;
+	float: left;
+	border-bottom: 1px solid #c9c9c9;
+}
+.passwd{
+	height: 100px;
+}
+.part_1_right_con{
+	width: 520px;
+	height: 200px;
+	float: left;
+	background: #f3f3f3;
+}
+.part_1_right_con ul li{
+	list-style-type: none;
+	width: 520px;
+	height:30px;
+	padding: 5px 0px;
+}
+.in{
+	width: 130px;
+	height: 30px;
+	float: left;
+	margin-left: 10px;
+}
+.in_info{
+	display: inline-block;
+	width: 350px;
+	height: 30px;
+	float: left;
+	margin-left: 10px;
+	font-size: 12px;
+	color: #7e7e7e;
+}
+.code{
+	font-size: 14px;
+	color: green;
+}
+.box_more{
+	position: absolute;
+	height: 30px;
+	line-height: 30px;
+	text-align: left;
+	top: 540px;
+	left: 0px;
+}
+.btn{
+	height: 30px;
+}
+#tj{
+	display: block;
+	width: 81px;
+	height: 27px;
+	background: url(../images/btn.png) no-repeat;
+	margin:0 auto;
+	text-indent: -999px;
+	border: 0px;
+	cursor: pointer;
+}
+#fs{
+	display: block;
+	width: 162px;
+	height: 54px;
+	background: url(../images/anniu_7_1.jpg) no-repeat;
+	margin:0 auto;
+	text-indent: -999px;
+	border: 0px;
+	cursor: pointer;
+	float: right;
+}
+input.error { border: 1px solid red; }
+label.error {
+  background:url("./demo/images/unchecked.gif") no-repeat 0px 0px;
+
+  padding-left: 16px;
+
+  padding-bottom: 2px;
+
+  font-weight: bold;
+
+  color: #EA5200;
+}
+label.checked {
+  background:url("./demo/images/checked.gif") no-repeat 0px 0px;
+}
+.error{
+	color: red;
+}

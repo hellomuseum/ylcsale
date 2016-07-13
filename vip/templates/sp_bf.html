@@ -1,0 +1,300 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+<title>乐天游乐场售票系统-售票模块</title>
+<script type="text/javascript" src="../js/jquery-1.11.3.js"></script>
+<script src="../jquery-validation-1.9.0/lib/jquery.js" type="text/javascript"></script>
+<script src="../jquery-validation-1.9.0/jquery.validate.js" type="text/javascript"></script>
+<script src="../jquery-validation-1.9.0/lib/jquery.metadata.js" type="text/javascript"></script>
+<script language="javascript">
+//document.getElementById('selectpz').options[1].selected=true;
+//票种处理函数
+function pz(s) 
+{ 
+	var price = s.substr(s.indexOf("-") + 1);
+    document.getElementById('price').value = price;
+    document.getElementById("tijiao").disabled = false; //普通Js写法  
+//   $("#removeButton").removeAttr("disabled");// Enable，JQuery写法  
+//    $("#removeButton").attr("disabled","disabled");// disabled//    if(s.indexOf("-") > 0 ) { 
+//  	    alert('str中包含-子字符串'); 
+//     	}
+
+
+};
+
+//期间处理函数
+function qj(s) 
+{ 
+	var zkl = s.substr(s.indexOf("-") + 1);
+    document.getElementById('zkl').value = zkl;
+    document.getElementById("tijiao").disabled = false; //普通Js写法  
+//   $("#removeButton").removeAttr("disabled");// Enable，JQuery写法  
+//    $("#removeButton").attr("disabled","disabled");// disabled//    if(s.indexOf("-") > 0 ) { 
+//  	    alert('str中包含-子字符串'); 
+//     	}
+
+
+};
+//实收金额处理函数
+function ssje(s) 
+{ 
+    document.getElementById('price').value = s;
+    document.getElementById("tijiao").disabled = false; //普通Js写法  
+//   $("#removeButton").removeAttr("disabled");// Enable，JQuery写法  
+//    $("#removeButton").attr("disabled","disabled");// disabled//    if(s.indexOf("-") > 0 ) { 
+//  	    alert('str中包含-子字符串'); 
+//     	}
+
+
+};
+
+
+$(document).ready(function(){
+	
+	var pzid = document.getElementById('selectpz');//获取票种ID
+	var pzid_v = pzid.options[pzid.options.selectedIndex].value; //得到票种的值
+	var pzdj = pzid_v.substr(pzid_v.indexOf("-") + 1);//得到票种单价
+    document.getElementById('price').value = pzdj;//将票种单价放在这儿
+
+	var qjid = document.getElementById('selectqj');//获取期间ID
+	var qjid_v = qjid.options[qjid.options.selectedIndex].value; //得到期间的值
+	var qjzk = qjid_v.substr(qjid_v.indexOf("-") + 1);//得到期间折扣
+    document.getElementById('zkl').value = qjzk;//将期间折扣放在这儿
+
+//计算应收金额=票种单价 * 张数 * 折扣    
+//	var zsid = document.getElementById('selectpz');//获取张数ID
+//	var zsid_v = zsid.value; //得到张数的值
+//	var num_pzdj = new Number(pzdj);
+//	var num_zsid_v = new Number(zsid_v);
+//	var num_qjzk = new Number(qjzk);
+//	var ysje = num_pzdj * num_zsid_v * num_qjzk;
+//	var ysje2= ysje.toFixed(2);
+//    document.getElementById('ssje').value = ysje2;//将计算好的应收金额放在这儿
+
+
+
+    
+    //document.getElementById('tijiao').value='tijiao';
+	//var oBtn = document.getElementById('tijiao');
+	//oBtn.disabled = 'disabled';//按钮无效；
+	document.getElementById('tijiao').disabled = true;//按钮无效；
+	//var oBtn2 = document.getElementById('tijiao');
+	//oBtn2.enabled = 'enabled';//按钮有效；
+	
+	$("form:input").click(function(){
+		var content = $(this).val();
+		alert(content);
+	});
+
+	
+	
+	  $(".box_more :checkbox").click(function(){
+	    if ($(this).is(':checked')) {
+	      $('.form_part_3').slideDown();
+	      $('.change_text').text("收起");
+	    }else{
+	      $('.form_part_3').slideUp();
+	      $('.change_text').text("填写更多资料");
+	    }
+	  });
+	});
+
+	$(function(){
+	    <!--双击移动-->
+	    $("#left").dblclick(function(){
+	      $("option:selected",this).appendTo("#right");    //移动所有被选中的option，追加到另一个select中
+	    });
+	    $("#right").dblclick(function(){
+	      $("option:selected",this).appendTo("#left");
+	    });
+	    $("#toRight").click(function(){
+	      $("#left option:selected").appendTo("#right");
+	    });
+	    $("#toLeft").click(function(){
+	      $("#right option:selected").appendTo("#left");
+	    });
+	  });
+
+
+$(function(){
+
+  $("#form_regist").validate({
+
+    errorClass: "validate-error",
+    // 错误提示的css类名"error"
+    //如果验证发生错误，为出错的HTML元素应用该CSS样式
+    //errorPlacement：Callback,
+    //更改错误信息显示的位置
+    //Default: 把错误信息放在验证的元素后面 
+    //指明错误放置的位置，默认情况是：error.appendTo(element.parent());即把错误信息放在验证的元素后面 
+    //errorPlacement: function(error, element) {  
+      //   error.appendTo(element.parent());  
+    //}
+
+    meta :"validate",
+    // 采用meta String方式进行验证（验证内容与写入class中）
+    errorElement :"div",
+    // 使用"div"标签标记错误， 默认:"label"
+    wrapper:"li",
+    // 使用"li"标签再把上边的errorELement包起来
+    onsubmit:true,
+    // 是否在提交时验证,默认:true
+    //onfocusout:false,
+    // 是否在获取焦点时验证,默认:true
+    onkeyup :true,
+    // 是否在敲击键盘时验证,默认:true
+    onclick:false,
+    // 是否在鼠标点击时验证（一般验证checkbox,radiobox）
+    focusCleanup:true,
+    // 当未通过验证的元素获得焦点时,并移除错误提示
+    focusInvalid: true,
+    //是否把焦点聚焦在最后一个动作或者最近的一次出错上 
+    submitHandler:
+    //通过验证后运行的函数,里面要加上表单提交的函数,否则表单不会提交 
+    $(".selector").validate({
+      submitHandler:function(form) {
+      alert("验证通过");
+      //$(form).ajaxSubmit();
+      form.submit();
+         }
+    }),
+
+    rules: {
+      txtloginname: {
+        required:true,  //必填项
+        minlength:function(){ //最短长度，这里hanZiNum为自定义的验证函数
+          doAjax(); //执行验证
+          return 2;
+        },
+        maxlength:function(){ //最长长度
+        return 8;
+        }
+     },
+      //必填项，最小长度为2，最大长度为8。
+      selectpz:{required:true},
+      //必填项。
+      selectqj:{required:true},
+      //必填项。
+      zs:{required:true,number:true,min:1,max:150000},
+      //要求为正整数且位于1和150000之间。
+      ssje:{required:true,number:true,min:1,,max:150000},
+      //要求为数字。
+    },
+    //下面为提示信息
+    messages:{
+      txtloginname:{required:"用户名不能为空!",minlength:"用户名长度至少是 2 。",maxlength:"用户名超过允许的最大长度（8）。"},
+      selectpz:{required:"票种不能为空!"},
+      selectqj:{required:"期间不能为空!"},
+      zs:{number:"售票张数必须为数字!",min:"最小有误（1张）!",max:"最大有误（最大1500000张）!"},
+      ssje:{number:"实收金额必须为数字!",min:"最小有误（1.00）!",max:"最大有误（最大1500000.00）!"},
+    }
+    
+  });
+
+
+});
+
+
+//会员信息保存部分
+//disabled="true" 此果文字会变成灰色，不可编辑。 
+//readOnly="true" 文字不会变色，也是不可编辑的
+// function dosave() {
+//   //alert('在此书写保存代码...');
+//   //$("#saveregid").attr("disabled", true); 
+// $.ajax({
+//     url: "member57-2.php",     //提交的动态页面地址
+//     data: 'action=check&username='+ $('#yd631_name').val() ,   //提交过去的参数
+//     type:'post',   //上面的参数会以POST形式提交给后台
+//     dataType:"html",   //返回纯文本HTML信息
+//     success: function(data){$("#loginname_sign").html(data);}
+
+//   });
+// }
+
+</script>
+</head>
+
+<body><center>
+  <form class="cmxform" id="form_regist" method="post" action="center.php?action=sp_save">
+  <table>
+     <tr align="center" bgcolor="#CCCCCC">
+      <td> <strong>乐天游乐场售票系统-售票模块</strong>||<a href="center.php">返回</a></td>
+    </tr>
+  </table>
+  <table width="60%" height="500"  border="0" cellpadding="0" cellspacing="1" bgcolor="#000000">
+    <tr bgcolor="#CCCCCC">
+      <td width="19%" align="right">售票种类：</td>
+      <td width="81%" align="left">
+   		<select name="selectpz" id="selectpz" onchange=" javascript:pz(this.options[this.options.selectedIndex].value);">   
+          <{section name=i loop=$pz}>
+              <option value='<{$pz[i].pz}>'><{$pz[i].name}></option>
+          <{/section}>
+   		</select>      
+    
+      </td>
+    </tr>
+    <tr bgcolor="#CCCCCC">
+      <td width="19%" align="right">售票单价：</td>
+      <td width="81%" align="left"><input name="price" type="text" id="price" value=" " readOnly="true"></td>
+    </tr>
+    <tr bgcolor="#CCCCCC">
+      <td width="19%" align="right">售票期间：</td>
+      <td width="81%" align="left">
+   		<select name="selectqj" id="selectqj" onchange=" javascript:qj(this.options[this.options.selectedIndex].value);">   
+          <{section name=i loop=$qj}>
+              <option value='<{$qj[i].qj}>'><{$qj[i].name}></option>
+          <{/section}>
+   		</select>      
+    
+      </td>      
+    </tr>
+    <tr bgcolor="#CCCCCC">
+      <td width="19%" align="right">折扣率：</td>
+      <td width="81%" align="left"><input name="zkl" type="text" id="zkl" maxlength="4" value=" " readOnly="true"></td>
+
+        
+    </tr>
+    <tr bgcolor="#CCCCCC">
+      <td width="19%" align="right">售票张数：</td>
+      <td width="81%" align="left"><input name="zs" type="text" id="zs" maxlength="4" value="1"></td>
+    </tr>
+    <tr bgcolor="#CCCCCC">
+      <td width="19%" align="right">应收金额（￥元）：</td>
+      <td width="81%" align="left"><input name="ysje" type="text" id="ysje" value=" " readOnly="true"></td>
+    </tr>
+    <tr bgcolor="#CCCCCC">
+      <td width="19%" align="right">实收金额（￥元）：</td>
+      <td width="91%" align="left"><input name="ssje" type="text" id="ssje" value=" " onchange=" javascript:ssje(this.value);" ></td>
+    </tr>
+    <tr bgcolor="#CCCCCC">
+      <td width="19%" align="right">找零（￥元）：</td>
+      <td width="91%" align="left"><input name="zl" type="text" id="zl" value="" readOnly="true"></td>
+    </tr>
+     <tr bgcolor="#CCCCCC">
+      <td width="19%" align="right">售票人：</td>
+      <td width="91%" align="left"><input name="human" type="text" id="human" value='<{$user_name}>' readOnly="true"></td>
+    </tr>   
+     <tr bgcolor="#CCCCCC">
+      <td width="19%" align="right">备注：</td>
+      <td width="81%" align="left"><input name="remark" type="text" id="remark" value="" ></td>
+    </tr>       
+
+    </tr>   
+     <tr bgcolor="#CCCCCC">
+      <td width="19%" align="right">测试按钮：</td>
+      <td width="81%" align="left"><INPUT type=”button”   value=”Button”   onclick=”selectpz.selectedIndex=yd631_age.value”;selectpz.fireEvent(‘onchange’)”></td>
+    </tr>     
+
+    
+    <tr align="center" bgcolor="#CCCCCC">
+      <td colspan="2"><input type="submit" name="Submit" id="tijiao" value="提交" onclick="javascript:{this.disabled=true;document.form1.submit();}>　　
+        <input type="reset" name="Submit" value="重置"></td>
+    </tr>
+  </table>
+ 
+  </form> 
+</center>
+
+</body>
+</html>

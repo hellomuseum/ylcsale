@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>收信箱</title>
+</head>
+<style>
+*{
+    font-size:20px;
+}
+ul{
+  width:1200px;line-height:21px;padding:0;margin:0  
+}
+li{
+    float:left;text-align:left;width:200px;
+}
+.clear{
+    clear:both;
+}
+
+</style>
+<body>
+<div align="center">
+    <a href="center.php">用户中心</a> >> 收信箱
+    <a href="center.php">返回</a>
+    <br/>
+    <hr>
+    <a href="center.php?action=receive_list">收信箱</a> | 
+    <a href="center.php?action=send_list">发信箱</a> | 
+    <a href="center.php?action=send">发信</a><br/>
+    <ul>
+    <li>全选</li>
+    <li>标题</li>
+    <li>内容</li>
+    <li>发送时间</li>
+    <li>发信人</li>
+    <li>操作</li>
+    </ul>
+    <div class='clear'></div>
+    <{section name=i loop=$list}>
+        <ul>
+        <li><input type="checkbox" class="child" name="gid[]" /></li>
+        <li><{$list[i].title}></li>
+        <li><{$list[i].content}></li>
+        <li><{$list[i].createtime|date_format:"%Y-%m-%d"}></li>
+        <li><{$list[i].yd631_name}></li>
+        <li><a href='center.php?action=del&id=<{$list[i].id}>'>删除</a></li>
+        </ul>
+        <div class='clear'></div>
+    <{/section}>
+    <{$page}>
+    </div>
+</body>
+</html>

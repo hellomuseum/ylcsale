@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>售票信息查询分析</title>
+</head>
+<style type="text/css">
+*{
+    font-size:18px;
+}
+tr{
+  width:1300px;line-height:21px;padding:0;margin:0  
+}
+td{
+  float:left;text-align:left;overflow: hidden; text-overflow:ellipsis;
+}
+.clear{
+    clear:both;
+}
+</style>
+
+<body>
+<div align="center">
+    <strong>针对【后台】的售票信息查询分析并加入删除维护功能（特此说明！） ||  </strong>
+    <a href="./index.php?action=p_cx_human">返  回</a>
+    <br/>
+    <hr>
+    <table width="100%" height="50"  border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+    <tr bgcolor="#999999">
+      <td width="3%">删除</td>
+      <td width="3%">ID</td>
+      <td width="10%">售票日期</td>
+      <td width="14%">售票种类</td>
+      <td width="5%">单价</td>
+      <td width="5%">售票张数</td>
+      <td width="12%">售票期间</td>
+      <td width="7%">折扣率</td>
+      <td width="7%">应收金额</td>
+      <td width="7%">实收金额</td>
+      <td width="5%">找零</td>
+      <td width="7%">售票人</td>
+      <td width="10%">备注</td>
+      <td width="5%">DEL</td>
+    </tr>
+    </table>
+    <div class='clear'></div>
+    <{section name=i loop=$list}>
+        <table width="100%" height="51"  border="0" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
+        <tr bgcolor="#CCCCCC">
+        <td width="3%"><input type="checkbox" class="child" name="gid[]" value="<{$list[i].id}>"/></td>
+        <td width="3%"><{$list[i].id}></td>
+        <td width="10%"><{$list[i].sales_time|date_format:"%Y-%m-%d"}></td>
+        <td width="14%"><{$list[i].ticket_kind_name}></td>  
+        <td width="5%"><{$list[i].ticket_kind_price}></td>
+        <td width="5%"><{$list[i].sales_amount}></td>
+        <td width="12%"><{$list[i].period_name}></td>
+        <td width="7%"><{$list[i].period_discount}></td>
+        <td width="7%"><{$list[i].receivable_money}></td>
+        <td width="7%"><{$list[i].received_money}></td>
+        <td width="5%"><{$list[i].odd_change}></td>
+        <td width="7%"><{$list[i].human}></td>
+        <td width="10%"><{$list[i].remark}></td>
+<!--    <td width="5%"><a href="admin_pass.php?id=<{$list[i].id}>&pass=<{$list[i].id}>"><{$list[i].id}></a></td>  -->
+        <td width="5%"><a href="javascript:if(confirm('确实要删除该售票记录吗?'))location='admin_del_sp_admin.php?id=<{$list[i].id}>'">删除</a></td>
+        </tr> 
+        </table>
+        <div class='clear'></div>
+    <{/section}>
+    <div class='clear'></div>
+    <table width="100%" height="50"  border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+    <tr bgcolor="#999999">
+      <td width="25%">售票张数合计：<{$hj[0].zshj}></td>
+      <td width="25%">实收金额合计：<{$hj[0].ssjehj}></td>
+      <td width="25%">应收金额合计：<{$hj[0].ysjehj}></td>
+      <td width="25%">找零金额合计：<{$hj[0].zljehj}></td>
+    </tr>
+    </table>    
+    <{$page}>   
+    </div>
+
+</body>
+</html>

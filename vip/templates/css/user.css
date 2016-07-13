@@ -1,0 +1,45 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+/**用户管理系统首页样式**/
+#in_wrap{
+	width: 700px;
+	height: 600px;
+	margin: 0 auto;
+}
+.in_header{
+	width: 700px;
+	height: 60px;
+	background: url(../images/top.png) no-repeat;
+}
+.in_con{
+	width: 500px;
+	height: 400px;
+	margin: 0 auto;
+	margin-top: 100px;
+}
+.in_con ul li{
+	list-style-type: none;
+	display: block;
+	width: 150px;
+	height: 150px;
+	float: left;
+	margin-right: 10px;
+	text-align: center;
+	line-height: 150px;
+	border: 1px solid #c9c9c9;
+	border-radius: 90px;
+}
+.in_con ul li a{
+	display: block;
+	width: 150px;
+	height: 150px;
+	text-decoration: none;
+	color: #303030;
+}
+.in_con ul li a:hover{
+	background: #f78c00;
+	color: #FFFFFF;
+	border-radius: 90px;
+}
